@@ -17,8 +17,10 @@ public class EmployeePayRollMain {
             Statement stmt = null;
             stmt = connection.createStatement();
 //            boolean val = stmt.execute("show databases");
-            ((Statement) stmt).executeUpdate("CREATE TABLE employee_payroll (id int not null auto_increment,name varchar(30) not null,salary double not null,start date not null,primary key(id))");
-            System.out.println("Created table in given database...");
+            int count = stmt.executeUpdate("insert into employee_payroll(name,salary,start)values(\"Divya\",1000,'2020-01-2'),(\"Lohith\",60000,'2020-08-22'),(\"Prathmesh\",600,'2020-08-23')");
+            System.out.println(count+"Employee inserted successfully");
+//            ((Statement) stmt).executeUpdate("CREATE TABLE employee_payroll (id int not null auto_increment,name varchar(30) not null,salary double not null,start date not null,primary key(id))");
+//            System.out.println("Created table in given database...");
             boolean val = stmt.execute("select * from employee_payroll");
             System.out.println(val);
             if (val){
