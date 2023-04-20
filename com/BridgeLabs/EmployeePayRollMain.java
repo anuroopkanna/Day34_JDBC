@@ -29,112 +29,37 @@ public class EmployeePayRollMain {
 ////            System.out.println("Showing data present in the table");
 //            boolean val = stmt.execute("select * from emp_payroll  where name = 'Lohith'");
 //            System.out.println(val);
-//            if (val){
-//                ResultSet rs = stmt.getResultSet();
-//                while (rs.next()) {
-//                    // Retrieve by column name
-//                    System.out.print("ID: " + rs.getInt("id"));
-//                    System.out.print(", Name: " + rs.getString("name"));
-//                    System.out.println(", Gender: " +rs.getString("gender"));
-//                    System.out.print(", Salary: " + rs.getDouble("salary"));
-//                    System.out.print(", Date: " + rs.getDate("start"));
-//                    System.out.println();
-//                }
-//            }else {
-//                int count2=stmt.getUpdateCount();
-//                System.out.println(count2);
-//            }
-            System.out.println("********************SUM(MALE)********************");
-            boolean sum = stmt.execute("select SUM(salary)from employee_payroll where gender ='m'");
-            if(sum){
+            boolean val = stmt.execute("select * from employee_payroll");
+            if (val){
                 ResultSet rs = stmt.getResultSet();
-                while (rs.next()){
-                    System.out.print("sum of all male employee: " + rs.getInt("SUM(salary)"));
+                while (rs.next()) {
+                    // Retrieve by column name
+                    System.out.print("ID: " + rs.getInt("id"));
+                    System.out.print(", Name: " + rs.getString("name"));
+                    System.out.println(", Gender: " +rs.getString("gender"));
+                    System.out.print(", Salary: " + rs.getDouble("salary"));
+                    System.out.print(", Date: " + rs.getDate("start"));
+                    System.out.println();
                 }
+            }else {
+                int count2=stmt.getUpdateCount();
+                System.out.println(count2);
             }
-            System.out.println();
-            System.out.println("********************AVG(MALE)********************");
-            boolean avg = stmt.execute("select AVG(salary)from employee_payroll where gender ='m'");
-            if(avg){
-                ResultSet rs = stmt.getResultSet();
-                while (rs.next()){
-                    System.out.print("avg of all male employee: " + rs.getInt("AVG(salary)"));
-                }
-            }
-            System.out.println();
-            System.out.println("********************MIN(MALE)********************");
-            boolean MIN = stmt.execute("select MIN(salary)from employee_payroll where gender ='m'");
-            if(MIN){
-                ResultSet rs = stmt.getResultSet();
-                while (rs.next()){
-                    System.out.print("avg of all male employee: " + rs.getInt("MIN(salary)"));
-                }
-            }
-            System.out.println();
-            System.out.println("********************MAX(MALE)********************");
-            boolean MAX = stmt.execute("select MAX(salary)from employee_payroll where gender ='m'");
-            if(MAX){
-                ResultSet rs = stmt.getResultSet();
-                while (rs.next()){
-                    System.out.print("max of all male employee: " + rs.getInt("MAX(salary)"));
-                }
-            }
-            System.out.println();
-            System.out.println("********************count(male)********************");
-            boolean count = stmt.execute("select COUNT(id)from employee_payroll where gender ='m'");
-            if(count){
-                ResultSet rs = stmt.getResultSet();
-                while (rs.next()){
-                    System.out.print("avg of all male employee: " + rs.getInt("count(id)"));
-                }
-            }
-            System.out.println();
-            System.out.println("********************SUM(MALE)********************");
-            boolean sumf = stmt.execute("select SUM(salary)from employee_payroll where gender ='f'");
-            if(sumf){
-                ResultSet rs = stmt.getResultSet();
-                while (rs.next()){
-                    System.out.print("sum of all female employee: " + rs.getInt("SUM(salary)"));
-                }
-            }
-            System.out.println();
-            System.out.println("********************AVG(MALE)********************");
-            boolean avgf = stmt.execute("select AVG(salary)from employee_payroll where gender ='f'");
-            if(avgf){
-                ResultSet rs = stmt.getResultSet();
-                while (rs.next()){
-                    System.out.print("avg of all female employee: " + rs.getInt("AVG(salary)"));
-                }
-            }
-            System.out.println();
-            System.out.println("********************MIN(MALE)********************");
-            boolean MINf = stmt.execute("select MIN(salary)from employee_payroll where gender ='f'");
-            if(MINf){
-                ResultSet rs = stmt.getResultSet();
-                while (rs.next()){
-                    System.out.print("avg of all female employee: " + rs.getInt("MIN(salary)"));
-                }
-            }
-            System.out.println();
-            System.out.println("********************MAX(MALE)********************");
-            boolean MAXf = stmt.execute("select MAX(salary)from employee_payroll where gender ='f'");
-            if(MAXf){
-                ResultSet rs = stmt.getResultSet();
-                while (rs.next()){
-                    System.out.print("max of all female employee: " + rs.getInt("MAX(salary)"));
-                }
-            }
-            System.out.println();
-            System.out.println("********************count(male)********************");
-            boolean countf = stmt.execute("select COUNT(id)from employee_payroll where gender ='f'");
-            if(countf){
-                ResultSet rs = stmt.getResultSet();
-                while (rs.next()){
-                    System.out.print("avg of all female employee: " + rs.getInt("count(id)"));
-                }
-            }
-            System.out.println();
-
+            int isupdated = stmt.executeUpdate("alter table employee_payroll add phonenumber int after start");
+            int isupdated1 = stmt.executeUpdate("alter table employee_payroll add address varchar(100) after phonenumber");
+            int isupdated2 = stmt.executeUpdate("alter table employee_payroll add department varchar(50) after salary");
+            System.out.println(isupdated1);
+            System.out.println(isupdated2);
+            stmt.executeUpdate("update employee_payroll set phonenumber = 987648 where name = 'Lohith'");
+            stmt.executeUpdate("update employee_payroll set phonenumber = 649875 where name = 'Divya'");
+            stmt.executeUpdate("update employee_payroll set phonenumber = 654321 where name = 'Prathmesh'");
+            stmt.executeUpdate("update employee_payroll set phonenumber = 765778 where name = 'Swathi'");
+            stmt.executeUpdate("update employee_payroll set phonenumber = 675456 where name = 'Ravali'");
+            stmt.executeUpdate("update employee_payroll set address = 'Hyderbad' ,department='sales' where id = 1");
+            stmt.executeUpdate("update employee_payroll set address = 'Delhi' ,department='teamlead' where id = 2");
+            stmt.executeUpdate("update employee_payroll set address = 'Chennai' ,department='manager' where id = 3");
+            stmt.executeUpdate("update employee_payroll set address = 'Bengaluru' ,department='marketing' where id = 4");
+            stmt.executeUpdate("update employee_payroll set address = 'solapur' ,department='HR' where id = 5");
         } catch (Exception e){
             e.printStackTrace();
         }
