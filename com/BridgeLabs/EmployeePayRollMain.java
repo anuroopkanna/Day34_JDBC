@@ -19,6 +19,11 @@ public class EmployeePayRollMain {
 //            boolean val = stmt.execute("show databases");
 //            int count = stmt.executeUpdate("insert into employee_payroll(name,salary,start)values(\"Divya\",1000,'2020-01-2'),(\"Lohith\",60000,'2020-08-22'),(\"Prathmesh\",600,'2020-08-23')");
 //            System.out.println(count+"Employee inserted successfully");
+            int isupdated = stmt.executeUpdate("alter table employee_payroll add gender varchar(20) after name");
+            System.out.println(isupdated);
+            stmt.executeUpdate("update employee_payroll set gender = 'f' where name = 'Divya'");
+            stmt.executeUpdate("update employee_payroll set gender = 'm' where name = 'Lohith'");
+            stmt.executeUpdate("update employee_payroll set gender = 'm' where name = 'Prathmesh'");
 //            ((Statement) stmt).executeUpdate("CREATE TABLE employee_payroll (id int not null auto_increment,name varchar(30) not null,salary double not null,start date not null,primary key(id))");
 //            System.out.println("Created table in given database...");
 //            System.out.println("Showing data present in the table");
@@ -30,6 +35,7 @@ public class EmployeePayRollMain {
                     // Retrieve by column name
                     System.out.print("ID: " + rs.getInt("id"));
                     System.out.print(", Name: " + rs.getString("name"));
+                    System.out.println(", Gender: " +rs.getString("gender"));
                     System.out.print(", Salary: " + rs.getDouble("salary"));
                     System.out.print(", Date: " + rs.getDate("start"));
                     System.out.println();
