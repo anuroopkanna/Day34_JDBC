@@ -79,6 +79,7 @@ public class EmployeePayRollMain {
             stmt.executeUpdate("update emp_payroll set basic_pay = 3500000.0 , deductions = 20000.0, taxable_pay = 550000.0, income_tax = 80000.0 , net_pay = 600000.0 where id = 3;");
             stmt.executeUpdate("update emp_payroll set basic_pay = 3000000.0 , deductions = 25000.0, taxable_pay = 250000.0, income_tax = 75000.0 , net_pay = 500000.0 where id = 4;");
             stmt.executeUpdate("update emp_payroll set basic_pay = 2500000.0 , deductions = 30000.0, taxable_pay = 290000.0, income_tax = 70000.0 , net_pay = 400000.0 where id = 5;");
+            stmt.executeUpdate("insert into emp_payroll(name, gender, salary, basic_pay, deductions, taxable_pay, income_tax, net_pay, department, start, phonenumber, address) values (\"Catharine\", 'f',600000,300000,25000,300000,75000,500000,\"sales and marketing\",'2019-07-29',452,\"Noida\")");
         } catch (Exception e){
             e.printStackTrace();
         }
