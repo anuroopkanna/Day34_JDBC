@@ -35,10 +35,13 @@ public class EmployeePayRollMain {
                 while (rs.next()) {
                     // Retrieve by column name
                     System.out.print("ID: " + rs.getInt("id"));
-                    System.out.print(", Name: " + rs.getString("name"));
-                    System.out.println(", Gender: " +rs.getString("gender"));
+                    System.out.print(", Name: " + rs.   getString("name"));
+                    System.out.print(", gender: " + rs.   getString("gender"));
                     System.out.print(", Salary: " + rs.getDouble("salary"));
                     System.out.print(", Date: " + rs.getDate("start"));
+                    System.out.print(", Phno: " + rs.getInt("phonenumber"));
+                    System.out.print(", address: " + rs.   getString("address"));
+                    System.out.print(", department: " + rs.   getString("department"));
                     System.out.println();
                 }
             }else {
