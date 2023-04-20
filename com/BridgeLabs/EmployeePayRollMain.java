@@ -21,6 +21,7 @@ public class EmployeePayRollMain {
             System.out.println(count+"Employee inserted successfully");
 //            ((Statement) stmt).executeUpdate("CREATE TABLE employee_payroll (id int not null auto_increment,name varchar(30) not null,salary double not null,start date not null,primary key(id))");
 //            System.out.println("Created table in given database...");
+            System.out.println("Showing data present in the table");
             boolean val = stmt.execute("select * from employee_payroll");
             System.out.println(val);
             if (val){
